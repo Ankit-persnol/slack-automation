@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const SlackModule = require('./src/slack/slack.module');
-const eventsService = require('./src/events/events.service');
+const SlackModule = require('./slack/slack.module');
+const eventsService = require('./events/events.service');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
