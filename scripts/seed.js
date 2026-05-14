@@ -1,8 +1,8 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Event = require('./src/events/events.schema');
+const Event = require('../src/events/events.schema');
 
-// Sample events data for testing
+// Sample events data for testing (same as dummy data)
 const sampleEvents = [
   {
     name: 'React India Summit 2026',
@@ -12,21 +12,21 @@ const sampleEvents = [
   },
   {
     name: 'Node.js Conference 2025',
-    url: 'https://nodeconf.com',
-    description: 'Annual Node.js conference for developers',
-    date: new Date('2025-09-20')
+    url: 'https://nodejsconf.io',
+    description: 'Annual Node.js conference',
+    date: new Date('2025-11-20')
   },
   {
     name: 'JavaScript Summit',
     url: 'https://jssummit.com',
     description: 'Global JavaScript developers summit',
-    date: new Date('2025-11-10')
+    date: new Date('2025-12-10')
   },
   {
-    name: 'Tech Crunch Disrupt',
+    name: 'TechCrunch Disrupt',
     url: 'https://techcrunch.com/disrupt',
     description: 'Startup and technology conference',
-    date: new Date('2025-09-15')
+    date: new Date('2025-10-05')
   },
   {
     name: 'AWS re:Invent',
@@ -37,6 +37,18 @@ const sampleEvents = [
 ];
 
 async function seedDatabase() {
+  // Check if using dummy data mode
+  if (process.env.USE_DUMMY_DATA === 'true') {
+    console.log('⚠️  USE_DUMMY_DATA is set to true.');
+    console.log('   Dummy JSON data is already available in-memory.');
+    console.log('   No need to seed the database.\n');
+    console.log('To use MongoDB instead:');
+    console.log('   1. Set USE_DUMMY_DATA=false in your .env file');
+    console.log('   2. Ensure MongoDB is running');
+    console.log('   3. Run npm run seed again\n');
+    process.exit(0);
+  }
+
   try {
     const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/slack_automation';
     
