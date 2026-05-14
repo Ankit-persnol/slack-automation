@@ -1,13 +1,32 @@
 {
   "name": "slack-automation",
   "version": "1.0.0",
-  "description": "Dummy slack automation project",
-  "main": "index.js",
+  "description": "Slack automation project with event management",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "seed": "node scripts/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "slack",
+    "automation",
+    "mongodb",
+    "events"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^4.7.2",
+    "@slack/web-api": "^7.15.2",
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "fuse.js": "^7.3.0",
+    "mongoose": "^9.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }
